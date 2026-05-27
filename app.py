@@ -18,13 +18,15 @@ label_encoders = {}
 
 for column in df.columns:
     if df[column].dtype == object:
+        df[column] = df[column].astype(str)
+
         le = LabelEncoder()
         df[column] = le.fit_transform(df[column])
+
         label_encoders[column] = le
 
 # Features and target
 X = df.drop("Loan_Approved", axis=1)
-X = X.astype(float)
 y = df["Loan_Approved"]
 
 # Train model
