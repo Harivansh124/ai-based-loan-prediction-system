@@ -24,6 +24,7 @@ for column in df.columns:
 
 # Features and target
 X = df.drop("Loan_Approved", axis=1)
+X = X.astype(float)
 y = df["Loan_Approved"]
 
 # Train model
