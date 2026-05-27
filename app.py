@@ -29,6 +29,12 @@ for column in df.columns:
 X = df.drop("Loan_Approved", axis=1)
 y = df["Loan_Approved"]
 
+# Convert all columns safely to numeric
+X = X.apply(pd.to_numeric, errors='coerce')
+
+# Fill any remaining NaN values
+X = X.fillna(0)
+
 # Train model
 model = GaussianNB()
 model.fit(X, y)
