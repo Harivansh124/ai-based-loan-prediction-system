@@ -17,7 +17,15 @@ df = df.fillna(df.mode().iloc[0])
 label_encoders = {}
 
 for column in df.columns:
-    if df[column].dtype == object:
+    if df[column].dtype == object or column in [
+    "Employment_Status",
+    "Marital_Status",
+    "Loan_Purpose",
+    "Property_Area",
+    "Education_Level",
+    "Gender",
+    "Employer_Category"
+]:
         df[column] = df[column].astype(str)
 
         le = LabelEncoder()
