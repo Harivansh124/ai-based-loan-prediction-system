@@ -11,6 +11,8 @@ df = pd.read_csv("loan_approval_data.csv")
 if "Applicant_ID" in df.columns:
     df = df.drop("Applicant_ID", axis=1)
 
+df = df.fillna(df.mode().iloc[0])
+
 # Encode categorical columns
 label_encoders = {}
 
